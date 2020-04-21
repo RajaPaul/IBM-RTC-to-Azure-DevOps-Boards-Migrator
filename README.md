@@ -1,7 +1,7 @@
-# IBM-RTC TO AZURE MIGRATOR
+# IBM RTC to Azure DevOps (Boards) Migrator
 
 ## Introduction 
-IBM-RTC TO AZURE MIGRATOR is a collection of python scripts which helps in migrating work items from IBM RTC to Microsoft AZURE DEVOPS.
+IBM RTC to Azure DevOps (Boards) Migrator is a collection of python scripts which helps in migrating work items from IBM RTC to Microsoft AZURE DEVOPS.
 It uses [Azure DevOps Python API](https://github.com/Microsoft/azure-devops-python-api). and [RTCCLIENT](https://rtcclient.readthedocs.io/en/latest/quickstart.html#) libraries to perform operations via REST API.
 
 ## Installation and Dependencies 
