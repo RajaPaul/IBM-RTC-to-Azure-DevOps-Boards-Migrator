@@ -27,7 +27,7 @@ organization_url = '' # eg.'https://dev.azure.com/sampleorg'
 
  
 ## Migrating RTC Work Items
-Config file is scripts/CONFIG.py
+Config file is **scripts/CONFIG.py**
 
  ```
  
