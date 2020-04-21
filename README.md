@@ -7,7 +7,7 @@ It uses [Azure DevOps Python API](https://github.com/Microsoft/azure-devops-pyth
 ## Installation and Dependencies 
 > **Python 3.8.1** was used during development
 All dependencies are mentioned in the file scripts/requirements.txt. You can use the following commands to install the dependencies: 
-> pip install -r scripts/requirements.txt
+``` pip install -r scripts/requirements.txt```
 
 
 ## Configuration
@@ -18,7 +18,7 @@ RTC_PASSWORD=""
 RTC_URL = "" # eg. https://ccm..../ccm
 
 project_name='' # AZURE PROJECT NAME : The project to migrate to
-user_domain ='' # company domain. eg @google.com or @intel.com
+user_domain ='' # company domain. eg @google.com or @intel.com , ## only supports migration when all user email are of same domain
 
 # Fill in with your personal access token and org URL for AZURE
 personal_access_token = ''
