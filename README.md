@@ -24,7 +24,7 @@ user_domain ='' # company domain. eg @google.com or @intel.com
 personal_access_token = ''
 organization_url = '' # eg.'https://dev.azure.com/sampleorg' 
  ```
- 
+
  
 ## Migrating RTC Work Items
 
@@ -38,6 +38,11 @@ userstory_query_urls=[]
  
   ```
 
+## Migrating EPICS
+After configuring the setting run the file **scripts/AZURE_RTC_MIGRATE_EPICS.py**
+
+## Migrating USER STORIES
+After configuring the setting run the file **scripts/AZURE_RTC_MIGRATE_US.py**
 
 
 
