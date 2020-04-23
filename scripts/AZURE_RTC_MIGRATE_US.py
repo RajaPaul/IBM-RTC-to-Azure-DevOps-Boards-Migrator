@@ -7,7 +7,6 @@ from azure.devops.v5_1.work_item_tracking.models import CommentCreate
 from datetime import datetime
 import json
 import os
-import threading
 import UTILS
 import glob
 import mmap
@@ -321,7 +320,7 @@ for user_story_item in queried_wis:
             attachment_html += '<a href="'+attachment.url+'" >'+attachment.label+' </a>  by '+attachment.creator +' on '+attachment.created+'<br/>'
 
         wit_5_1_client.add_comment(project=project.id,work_item_id=createdWorkItem.id,request=CommentCreate(text=attachment_html))
-        threadList=[]
+        
         UTILS.remove(US_FOLDER +'\\'+ user_story_item.identifier)
         os.mkdir(US_FOLDER +'\\'+ user_story_item.identifier)
         for i in attachments:

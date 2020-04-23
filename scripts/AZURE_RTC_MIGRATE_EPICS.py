@@ -7,7 +7,6 @@ from azure.devops.v5_1.work_item_tracking.models import CommentCreate
 from datetime import datetime
 import json
 import os
-import threading
 import UTILS
 import glob
 import mmap
@@ -306,7 +305,6 @@ for epic_item in queried_wis:
 
         wit_5_1_client.add_comment(project=project.id,work_item_id=createdWorkItem.id,request=CommentCreate(text=attachment_html))
 
-        threadList=[]
         UTILS.remove(EPIC_FOLDER +'\\'+ epic_item.identifier)
         os.mkdir(EPIC_FOLDER +'\\'+ epic_item.identifier)
         for i in attachments:

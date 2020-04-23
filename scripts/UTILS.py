@@ -1,6 +1,4 @@
-import time
 import os
-from selenium import webdriver
 import CONFIG
 import os
 import shutil
