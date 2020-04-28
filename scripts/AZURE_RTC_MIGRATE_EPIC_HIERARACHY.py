@@ -54,12 +54,6 @@ queried_wis=[]
 for epic_query_url in epic_query_urls:
     queried_wis.extend(queryclient.runSavedQueryByUrl(epic_query_url, returned_properties=returned_properties))
 
-
-# wk = rtcclient.getWorkitem(39333)
-# queried_wis.append(wk)
-# wk = rtcclient.getWorkitem(39330)
-# queried_wis.append(wk)
-
 count=0
 item_created = True
 while item_created :
