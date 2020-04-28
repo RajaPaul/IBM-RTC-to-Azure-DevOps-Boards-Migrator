@@ -373,7 +373,7 @@ for user_story_item in queried_wis:
     with open(CONFIG.US_JSON_FILE, 'w') as f:
         json.dump(RTC_AZURE_US_MAP, f)
 
-    print(count + ' of ' + len(queried_wis) + ' User Stories migrated ')
+    print(str(count) + ' of ' + str(len(queried_wis)) + ' User Stories migrated ')
 
 
 print('USER STORY MIGRATION COMPLETE')

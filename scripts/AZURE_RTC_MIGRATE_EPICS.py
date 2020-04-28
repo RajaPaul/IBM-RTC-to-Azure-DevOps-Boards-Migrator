@@ -359,7 +359,7 @@ for epic_item in queried_wis:
     with open(CONFIG.EPIC_JSON_FILE, 'w') as f:
         json.dump(RTC_AZURE_EPIC_MAP, f)
 
-    print(count + ' of ' + len(queried_wis) + ' EPICS migrated ')
+    print(str(count) + ' of ' + str(len(queried_wis)) + ' EPICS migrated ')
 
 
 print('EPICS MIGRATION COMPLETE')
