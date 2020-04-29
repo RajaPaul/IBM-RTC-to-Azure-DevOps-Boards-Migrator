@@ -20,3 +20,4 @@ member_ent_mngmnt_client = connection.clients_v5_0.get_member_entitlement_manage
 wit_5_1_client = connection.clients_v5_1.get_work_item_tracking_client()
 
 
+print('AZURE LOGIN COMPLETE')
