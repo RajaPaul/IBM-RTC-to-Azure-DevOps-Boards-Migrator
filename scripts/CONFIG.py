@@ -1,6 +1,7 @@
 RTC_USERNAME=""
 RTC_PASSWORD=""
 RTC_URL = "" # eg. https://ccm..../ccm
+RTC_projectarea_name = ""
 
 project_name='' # AZURE PROJECT NAME : The project to migrate to
 user_domain ='' # company domain. eg @google.com or @intel.com
@@ -16,6 +17,8 @@ epic_query_urls=[]
 
 userstory_query_urls=[]
 
+task_query_urls =[]
+
 
 EPIC_FOLDER = 'EPICs'
 EPIC_JSON_FILE = 'rtc-azure-epicmap.json'
@@ -23,6 +26,9 @@ EPIC_JSON_FILE = 'rtc-azure-epicmap.json'
 US_FOLDER = 'UserStories'
 US_JSON_FILE = 'rtc-azure-userstorymap.json'
 
+
+TASK_FOLDER = 'TASKS'
+TASK_JSON_FILE = 'rtc-azure-taskmap.json'
 
 
 validate_only=False
