@@ -53,7 +53,7 @@ After configuring the setting run the file **scripts/AZURE_RTC_MIGRATE_EPICS.py*
 
 ### Migrate EPICS with EPIC Hierarchy
 
-After configuring the setting run the file **scripts/AZURE_RTC_MIGRATE_EPIC_HIERARACHY.py**
+After configuring the setting run the file **scripts/AZURE_RTC_MIGRATE_EPIC_HIERARCHY.py**
 
 ## Migrating USER STORIES
 
