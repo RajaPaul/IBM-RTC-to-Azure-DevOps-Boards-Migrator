@@ -36,6 +36,7 @@ Config file is **scripts/CONFIG.py**
 
  ```
 # Query Details : Enter the saved query urls as list items, eg. ["https://ccm-...../","https://ccm-...../"]
+
 epic_query_urls=[]
 
 userstory_query_urls=[]
