@@ -10,6 +10,8 @@ password = CONFIG.RTC_PASSWORD
 
 rtcclient = RTCClient(url, username, password, ends_with_jazz=CONFIG.ends_with_jazz)
 
-projectAreas = rtcclient.getProjectAreas()
-ISD_Project_Area = projectAreas[0]
+
+ISD_Project_Area = rtcclient.getProjectArea(projectarea_name=CONFIG.RTC_projectarea_name)
+
+print('RTC LOGIN COMPLETE')
 
