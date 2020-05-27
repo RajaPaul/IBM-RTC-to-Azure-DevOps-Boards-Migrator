@@ -66,6 +66,7 @@ count=0
 # FIELD MAPPING
 for user_story_item in queried_wis:
     count=count+1
+    print('Processing RTC - ' + user_story_item.identifier)
     if(RTC_AZURE_US_MAP.get(user_story_item.identifier) is not None): continue
     
     comments = user_story_item.getComments()
