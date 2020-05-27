@@ -145,13 +145,13 @@ for work_item in queried_wis:
     jpos.append(jpo)
 
     
-    if default_field is not None:
+    if work_item.description is not None:
             
         jpo = JsonPatchOperation()
         jpo.from_ = None
         jpo.op = "add"
         jpo.path = "/fields/Microsoft.VSTS.TCM.ReproSteps"
-        jpo.value = default_field
+        jpo.value = work_item.description
 
         jpos.append(jpo)
     
