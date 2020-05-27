@@ -86,12 +86,14 @@ for user_story_item in queried_wis:
 
         jpos.append(jpo)
 
-    if description != "":
+    if description != "" or user_story_item.description is not None:
         jpo = JsonPatchOperation()
         jpo.from_ = None
         jpo.op = "add"
         jpo.path = "/fields/System.Description"
         jpo.value = description
+        if(user_story_item.description is not None):
+                jpo.value += user_story_item.description
 
         jpos.append(jpo)
 

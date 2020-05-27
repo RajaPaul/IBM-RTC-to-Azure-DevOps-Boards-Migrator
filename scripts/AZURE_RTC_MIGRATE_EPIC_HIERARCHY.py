@@ -86,12 +86,14 @@ while item_created :
 
             jpos.append(jpo)
 
-        if description != "":
+        if description != "" or epic_item.description is not None:
             jpo = JsonPatchOperation()
             jpo.from_ = None
             jpo.op = "add"
             jpo.path = "/fields/System.Description"
             jpo.value = description
+            if(epic_item.description is not None):
+                jpo.value += epic_item.description
 
             jpos.append(jpo)
 

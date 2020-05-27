@@ -83,19 +83,21 @@ for work_item in queried_wis:
         jpo.from_ = None
         jpo.op = "add" 
         jpo.path = "/fields/System.Title"
-        if(work_item.title[:255] is not None):
+        if(work_item.title is not None):
             jpo.value = work_item.title[:255]
             description+='<b> RTC ' + work_item.type + ' '+ work_item.identifier + ' : </b>' + work_item.title + ' <br/> <br/>'
         else :
             jpo.value = ""
         jpos.append(jpo)
 
-    if description != "":
+    if description != "" or work_item.description is not None:
         jpo = JsonPatchOperation()
         jpo.from_ = None
         jpo.op = "add"
         jpo.path = "/fields/System.Description"
         jpo.value = description
+        if(work_item.description is not None):
+            jpo.value += work_item.description
 
         jpos.append(jpo)
 
