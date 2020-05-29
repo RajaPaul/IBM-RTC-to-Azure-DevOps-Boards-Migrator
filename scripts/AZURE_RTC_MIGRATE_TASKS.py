@@ -36,7 +36,7 @@ project = core_client.get_project(project_name)
 projectarea_name = RTC.ISD_Project_Area.title
 
 # Query URL
-query_urls=CONFIG.userstory_query_urls
+query_urls=CONFIG.task_query_urls
 
 # column def
 returned_properties = "rtc_cm:modifiedBy,dc:modified,rtc_cm:contextId,dc:subject,oslc_cm:priority,dc:creator,rtc_cm:due,rtc_cm:estimate,rtc_cm:correctedEstimate,rtc_cm:timeSpent,rtc_cm:startDate,dc:created,rtc_cm:resolvedBy,rtc_cm:plannedFor,rtc_cm:ownedBy,dc:description,dc:title,rtc_cm:state,rtc_cm:resolution,oslc_cm:severity,dc:type,dc:identifier,rtc_cm:comments,rtc_cm:com.ibm.team.apt.attribute.acceptance,rtc_cm:com.ibm.team.apt.attribute.complexity,calm:tracksRequirement"
@@ -70,6 +70,7 @@ for work_item in queried_wis:
     count=count+1
     if(RTC_AZURE_WORKITEM_MAP.get(work_item.identifier) is not None): continue
     
+    print('Processing RTC - ' + work_item.identifier)
     comments = work_item.getComments()
     attachments = work_item.getAttachments()
     parent = work_item.getParent(returned_properties=returned_properties)
@@ -82,17 +83,21 @@ for work_item in queried_wis:
         jpo.from_ = None
         jpo.op = "add" 
         jpo.path = "/fields/System.Title"
-        jpo.value = work_item.title[:255]
-        description+='<b> RTC ' + work_item.type + ' '+ work_item.identifier + ' : </b>' + work_item.title + ' <br/> <br/>'
-
+        if(work_item.title is not None):
+            jpo.value = work_item.title[:255]
+            description+='<b> RTC ' + work_item.type + ' '+ work_item.identifier + ' : </b>' + work_item.title + ' <br/> <br/>'
+        else :
+            jpo.value = ""
         jpos.append(jpo)
 
-    if description != "":
+    if description != "" or work_item.description is not None:
         jpo = JsonPatchOperation()
         jpo.from_ = None
         jpo.op = "add"
         jpo.path = "/fields/System.Description"
         jpo.value = description
+        if(work_item.description is not None):
+            jpo.value += work_item.description
 
         jpos.append(jpo)
 
@@ -360,22 +365,22 @@ for work_item in queried_wis:
                 wit_5_1_client.add_comment(project=project.id,work_item_id=createdWorkItem.id,request=CommentCreate(text=comment_html))
     
     
-    userstory_details = {"self":{"op": "add","path": "/relations/-","value": {
+    workitem_details = {"self":{"op": "add","path": "/relations/-","value": {
       "rel": "System.LinkTypes.Hierarchy-Reverse",
       "name": "Parent",
       "url": createdWorkItem.url
     }},"parent":  RTC_AZURE_PARENT_MAP.get(parent.identifier) if parent is not None else None}
 
-    RTC_AZURE_WORKITEM_MAP[work_item.identifier]=userstory_details
+    RTC_AZURE_WORKITEM_MAP[work_item.identifier]=workitem_details
     print(createdWorkItem)
     # Creates a new file 
     with open('./'+FOLDER+'/items/'+work_item.identifier, 'w') as fp: 
-        json.dump(userstory_details,fp)
+        json.dump(workitem_details,fp)
         
     with open(WORKITEM_JSONFILE, 'w') as f:
         json.dump(RTC_AZURE_WORKITEM_MAP, f)
 
-    print(str(count) + ' of ' + str(len(queried_wis)) + WORKITEM_TYPE + 's migrated ')
+    print(str(count) + ' of ' + str(len(queried_wis)) + ' ' + WORKITEM_TYPE + 's migrated ')
 
 
-print('USER STORY MIGRATION COMPLETE')
+print(WORKITEM_TYPE+' MIGRATION COMPLETE')

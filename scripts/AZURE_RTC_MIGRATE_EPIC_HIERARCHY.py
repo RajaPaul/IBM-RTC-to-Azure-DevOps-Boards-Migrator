@@ -60,7 +60,8 @@ while item_created :
     item_created_count = 0
     # FIELD MAPPING
     for epic_item in queried_wis:
-        
+        count=count+1;
+        print('Processing RTC - ' + epic_item.identifier)
         if(RTC_AZURE_EPIC_MAP.get(epic_item.identifier) is not None): continue
         
         parent = epic_item.getParent(returned_properties=returned_properties)
@@ -68,7 +69,7 @@ while item_created :
         if((parent is not None) and RTC_AZURE_EPIC_MAP.get(parent.identifier) == None): continue
 
         item_created_count =  item_created_count + 1
-        count=count+1;
+        
         comments = epic_item.getComments()
         attachments = epic_item.getAttachments()
         
@@ -85,12 +86,14 @@ while item_created :
 
             jpos.append(jpo)
 
-        if description != "":
+        if description != "" or epic_item.description is not None:
             jpo = JsonPatchOperation()
             jpo.from_ = None
             jpo.op = "add"
             jpo.path = "/fields/System.Description"
             jpo.value = description
+            if(epic_item.description is not None):
+                jpo.value += epic_item.description
 
             jpos.append(jpo)
 
